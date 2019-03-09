@@ -45,7 +45,7 @@
                 </div>
             </div>            
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-8 mt-4 mt-md-0">
             <div class="card">
                 <div class="card">
                     <div class="card-header">
@@ -58,12 +58,14 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Date</th>
+                    <th>Actions</th>
                 </thead> 
                 <tfoot>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Date</th>
+                    <th>Actions</th>
                 </tfoot> 
                <tbody>
                    @foreach ($categories as $category)
@@ -72,6 +74,17 @@
                        <td>{{$category->name}}</td>
                        <td>{{$category->description}}</td>
                        <td>{{$category->updated_at}}</td>
+                       <td>
+                            <div class="row mx-3">
+                            <a href="{{route('admin.category.edit',$category->id)}}"><button class=" btn-sm btn-success fa fa-edit"></button></a>
+
+                            <form action="{{route('admin.category.destroy',$category->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <a href="{{route('admin.category.destroy',$category->id)}}"><button class=" btn-sm btn-danger fa fa-trash"></button></a>
+                            </form>
+                            </div>
+                       </td>
                     </tr>
                       
                    @endforeach
@@ -88,6 +101,7 @@
         </div>
     </div>
     @section('extrajs')
+        {{-- TODO --}}
         <script>
             $(document).ready(function() {
                 var table  = $('#example').DataTable();
