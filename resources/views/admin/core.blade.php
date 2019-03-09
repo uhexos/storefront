@@ -98,8 +98,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Category Action:</h6>
-          <a class="dropdown-item" href="{{route('admin.createCategory')}}">New Category</a>
-          <a class="dropdown-item" href="{{route('admin.allCategory')}}">Manage Category</a>
+          <a class="dropdown-item" href="{{route('admin.category.create')}}">New Category</a>
+          <a class="dropdown-item" href="{{route('admin.category.index')}}">Manage Category</a>
         </div>
       </li>
 
@@ -190,8 +190,9 @@
     </div>
   </div>
   
-<script src="{{asset('js/admin/sb-admin.js')}}"></script>
 
+<script src="{{asset('js/admin/sb-admin.js')}}"></script>
+@yield('extrajs')
 </body>
 
 </html>

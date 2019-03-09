@@ -2,3 +2,4 @@
 //TODO add support for mobile mmoney
 //TODO get a theme for front end
 //TODO clean up the javascript for the image deteection wrap into  a nice function
+

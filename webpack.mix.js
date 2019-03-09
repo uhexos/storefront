@@ -13,6 +13,11 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/sb-admin.js', 'public/js/admin')
+   // .js('resources/js/admin.js', 'public/js/admin')
+   // .js('resources/js/chart.js', 'public/js/admin')
+   // .js('resources/js/datatables.js', 'public/js/admin')
+   // .js('resources/js/demo.js', 'public/js/admin')
+   
    .sass('resources/sass/app.scss', 'public/css')
    .sass('resources/sass/admin.scss', 'public/css/admin');
 
