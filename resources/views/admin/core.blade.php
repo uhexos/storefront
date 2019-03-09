@@ -110,8 +110,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Product Actions</h6>
-          <a class="dropdown-item" href="{{route('admin.createProduct')}}">New Product</a>
-          <a class="dropdown-item" href="{{route('admin.allProduct')}}">Manage Products</a>
+          <a class="dropdown-item" href="{{route('admin.product.create')}}">New Product</a>
+          <a class="dropdown-item" href="{{route('admin.product.index')}}">Manage Products</a>
         </div>
       </li>
 

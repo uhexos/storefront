@@ -68,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        //TODO complete edit for categories
     }
 
     /**

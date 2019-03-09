@@ -21,8 +21,8 @@ Route::get('/register', function () {return view('register');})->name('register'
 Route::get('/admin/', function () {return view('admin.home');})->name('admin.home');
 // Route::get('/admin/category/new', function () {return view('admin.category.createCategory');})->name('admin.createCategory');
 // Route::get('/admin/category/all', function () {return view('admin.category.allCategory');})->name('admin.allCategory');
-Route::get('/admin/product/new', function () {return view('admin.product.createProduct');})->name('admin.createProduct');
-Route::get('/admin/products', function () {return view('admin.product.allProduct');})->name('admin.allProduct');
+// Route::get('/admin/product/new', function () {return view('admin.product.createProduct');})->name('admin.createProduct');
+// Route::get('/admin/products', function () {return view('admin.product.allProduct');})->name('admin.allProduct');
 Route::get('/admin/user/new', function () {return view('admin.user.createUser');})->name('admin.createUser');
 Route::get('/admin/users', function () {return view('admin.user.allUser');})->name('admin.allUser');
 Route::get('/admin/new/supplier', function () {return view('admin.supplier.createSupplier');})->name('admin.createSupplier');
@@ -37,5 +37,10 @@ Route::get('/staff/profile', function () {return view('staff.profile');})->name(
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
          Route::resource('/category', 'CategoryController');
+    });    
+});
+Route::prefix('admin')->group(function () {
+    Route::name('admin.')->group(function () {
+         Route::resource('/product', 'ProductController');
     });    
 });
