@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $category->description  =  $request->get('category_desc');
 
         $category->save();
-         return redirect(route('admin.category.create'))->with('success',$category->title." Added successfully");
+         return redirect(route('admin.category.create'))->with('success',$category->name." Added successfully");
     }
 
     /**

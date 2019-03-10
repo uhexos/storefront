@@ -43,3 +43,9 @@ Route::prefix('admin')->group(function () {
          Route::resource('/product', 'ProductController');
     });    
 });
+
+Route::prefix('admin')->group(function () {
+    Route::name('admin.')->group(function () {
+         Route::resource('/supplier', 'SupplierController');
+    });    
+});

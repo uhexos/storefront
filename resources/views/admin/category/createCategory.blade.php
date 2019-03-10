@@ -5,7 +5,6 @@
         <div class="col">
             <a href="#newCategory" class="btn btn-success mb-2">New Category</a>
         </div>
-        
     </div>
     <div class="row">
          <div class="col-12 col-md-12 mb-4 ">
@@ -15,7 +14,7 @@
                         Manage categories
                     </div>
                     <div class="card-body">
-                         <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <th>ID</th>
                     <th>Name</th>
@@ -44,7 +43,7 @@
                             <form action="{{route('admin.category.destroy',$category->id)}}" method="post">
                                 @csrf
                                 @method('delete')
-                                <a href="{{route('admin.category.destroy',$category->id)}}"><button class=" btn-sm btn-danger fa fa-trash"></button></a>
+                            <button class=" btn-sm btn-danger fa fa-trash"></button>
                             </form>
                             </div>
                        </td>
@@ -62,6 +61,9 @@
             </div>
            
         </div>
+        
+        
+
         <div class="col-12 col-md-6" id="newCategory">
            <div class="card">
                 <div class="card-header">
@@ -90,11 +92,13 @@
        
     </div>
     @section('extrajs')
-        //TODO add scrollable to data table
-        //TODO set auto focus to form on click new button
+        {{-- //TODO add scrollable to data table
+        //TODO set auto focus to form on click new button --}}
         <script>
             $(document).ready(function() {
-                var table  = $('#example').DataTable();
+                var table  = $('#example').DataTable({
+        "scrollX": true
+    });
                 table
                     .order( [ 3, 'desc' ] )
                     .draw();

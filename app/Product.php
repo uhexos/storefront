@@ -21,6 +21,12 @@ class Product extends Model
     //category relatinship for eloquent 
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id');
+        return $this->belongsTo('App\Category');
     }
+    
+    public function supplier()
+    {
+        return $this->belongsTo('App\Supplier');
+    }
+
 }

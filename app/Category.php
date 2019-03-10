@@ -14,12 +14,8 @@ class Category extends Model
        'description'
    ];
 
-   
-
-    //add relationship
-    // public function product(
-    // {
-        // return $this->hasMan('App\Product');
-    // }
+    public function product(){
+        return $this->hasMany('App\Product');
+    }
 
 }

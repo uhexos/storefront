@@ -133,8 +133,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Supplier Actions:</h6>
-          <a class="dropdown-item" href="{{route('admin.createSupplier')}}">Add Supplier</a>
-          <a class="dropdown-item" href="{{route('admin.allSupplier')}}">Manage Supplier</a>
+          <a class="dropdown-item" href="{{route('admin.supplier.create')}}">New Supplier</a>
+          <a class="dropdown-item" href="{{route('admin.supplier.index')}}">Manage Supplier</a>
         </div>
       </li>
       

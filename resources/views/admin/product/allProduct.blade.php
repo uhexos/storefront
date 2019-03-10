@@ -5,7 +5,7 @@
         <div class="col mb-4">
         <button class="btn btn-success">Add new</button>
     </div>
-    </a>
+    </a>Added
 </div>
 
 <div class="row">
@@ -29,6 +29,8 @@
                             <th>Cost Price</th>
                             <th>Selling Price</th>
                             <th>Category</th>
+                            <th>Supplier</th>
+                            <th>Description</th>
                             <th>Date</th>
                             <th>Actions</th>
                         </thead>
@@ -39,6 +41,8 @@
                             <th>Cost Price</th>
                             <th>Selling Price</th>
                             <th>Category</th>
+                            <th>Supplier</th>
+                            <th>Description</th>
                             <th>Date</th>
                             <th>Actions</th>
                         </tfoot>
@@ -51,6 +55,8 @@
                                 <td>{{$product->cost_price}}</td>
                                 <td>{{$product->selling_price}}</td>
                                 <td>{{$product->category->name}}</td>
+                                <td>{{$product->supplier->name}}</td>
+                                <td>{{$product->supplier->description}}</td>
                                 <td>{{$product->updated_at}}</td>
                                 <td>
                                     <div class="row mx-3">
@@ -165,8 +171,9 @@
                             >
                                 //auto generate from suppliier model 
                                 //TODO createsupplier model
-                                <option value="1">auto</option>
-                                <option value='1'>auto</option>
+                                @foreach ($suppliers as $supplier)
+                                        <option value="{{$supplier->id}}">{{$supplier->name}}</option> 
+                                @endforeach
                             </select>
                         </div>
                         </div>
@@ -251,7 +258,7 @@
         var table = $("#example").DataTable( {
         "scrollX": true
     });
-        table.order([6, "desc"]).draw();
+        table.order([7, "desc"]).draw();
     });
 </script>
 @endsection

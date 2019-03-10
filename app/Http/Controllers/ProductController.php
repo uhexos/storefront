@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Supplier;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,7 +18,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::all();
-        return view('admin.product.allProduct',compact('categories','products'));
+        $suppliers = Supplier::all();
+        return view('admin.product.allProduct',compact('categories','products','suppliers'));
     }
 
     /**
@@ -29,7 +31,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::all();
-        return view('admin.product.allProduct',compact('categories','products'));
+        $suppliers = Supplier::all();
+        return view('admin.product.allProduct',compact('categories','products','suppliers'));
     }
 
     /**
@@ -86,7 +89,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {   $categories = Category::all();
-        return view('admin.product.editProduct',compact('product','categories'));
+        $suppliers = Supplier::all();
+        return view('admin.product.editProduct',compact('product','categories','suppliers'));
     }
 
     /**
@@ -121,7 +125,7 @@ class ProductController extends Controller
         $product->media_id  =  $request->get('product_image');
 
         $product->save();
-         return redirect(route('admin.product.create'))->with('success',$product->name." Added successfully");
+         return redirect(route('admin.product.create'))->with('success',$product->name." updated successfully");
     }
 
     /**
