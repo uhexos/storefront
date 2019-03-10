@@ -98,7 +98,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Category Action:</h6>
-          <a class="dropdown-item" href="{{route('admin.category.create')}}">New Category</a>
+          <a class="dropdown-item" href="{{route('admin.category.create')}}#newCategory">New Category</a>
           <a class="dropdown-item" href="{{route('admin.category.index')}}">Manage Category</a>
         </div>
       </li>
@@ -110,7 +110,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Product Actions</h6>
-          <a class="dropdown-item" href="{{route('admin.product.create')}}">New Product</a>
+          <a class="dropdown-item" href="{{route('admin.product.create')}}#newProduct">New Product</a>
           <a class="dropdown-item" href="{{route('admin.product.index')}}">Manage Products</a>
         </div>
       </li>
@@ -153,6 +153,9 @@
     <div id="content-wrapper">
 
       <div class="container-fluid">
+        {{-- //TODO error and success alerts for submitted forms  --}}
+        @include('partials.successAlert')
+        @include('partials.errorAlert')
           @yield('content')
       </div>
       <!-- /.container-fluid -->

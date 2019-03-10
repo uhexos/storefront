@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Category;
 
 class CategoryController extends Controller
@@ -66,9 +67,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //TODO complete edit for categories
+        return view('admin.category.editCategory', compact('category'));
     }
 
     /**
@@ -78,9 +79,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+                'category_name' => 'required|string|max:50|unique:categories,name,'.$category->id,
+                'category_desc' => 'required|max:250',
+            ]);
+        $category->name  =  $request->get('category_name');
+        $category->description  =  $request->get('category_desc');
+
+        $category->save();
+        return redirect(route('admin.category.create'))->with('success',$category->name." Added successfully");    
     }
 
     /**
