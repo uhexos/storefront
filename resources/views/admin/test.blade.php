@@ -36,4 +36,11 @@
             </div>
         </div>
     </div>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Apple</button>
+  <button type="button" class="btn btn-success fa fa-edit">Samsung</button>
+  <button type="button" class="btn btn-danger fa fa-trash">Sony</button>
+</div> 
+
+
 @endsection

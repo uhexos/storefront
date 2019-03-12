@@ -133,7 +133,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Supplier Actions:</h6>
-          <a class="dropdown-item" href="{{route('admin.supplier.create')}}">New Supplier</a>
+          <a class="dropdown-item" href="{{route('admin.supplier.create')}}#newSupplier">New Supplier</a>
           <a class="dropdown-item" href="{{route('admin.supplier.index')}}">Manage Supplier</a>
         </div>
       </li>
@@ -153,7 +153,7 @@
     <div id="content-wrapper">
 
       <div class="container-fluid">
-        {{-- //TODO error and success alerts for submitted forms  --}}
+        {{-- error and success alerts for submitted forms  --}}
         @include('partials.successAlert')
         @include('partials.errorAlert')
           @yield('content')

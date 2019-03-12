@@ -11,6 +11,7 @@ class CreateProductsTable extends Migration
      *
      * @return void
      */
+    // heavily refactor this model into stock , product product_sale_item from site https://www.vertabelo.com/blog/technical-articles/modeling-a-database-for-recording-sales-part-2-creating-tables-for-products-and-services
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
@@ -24,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->double('selling_price',8,2);
             $table->unsignedBigInteger('media_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

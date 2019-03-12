@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();     
+        $categories = Category::where('active', 1)->get();     
         return(view('admin.category.createCategory',compact('categories')));
     }
 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();     
+        $categories = Category::where('active', 1)->get();     
         return(view('admin.category.createCategory',compact('categories')));
     }
 
@@ -106,7 +106,9 @@ class CategoryController extends Controller
         $name = $category->name;
 
         //delete
-        $category->delete();
+        //$category->delete();
+        $category->active = 0;
+        $category->save();
         //redirect
         return redirect(route("admin.category.index"))->with('success', $name.'Category has been deleted Successfully');
     }

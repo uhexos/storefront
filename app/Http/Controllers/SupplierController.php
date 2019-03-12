@@ -14,7 +14,7 @@ class SupplierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    $suppliers = Supplier::all();
+    {    $suppliers = Supplier::where('active', 1)->get();
         return view('admin.supplier.allSupplier',compact('suppliers'));
     }
 
@@ -25,7 +25,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-         $suppliers = Supplier::all();
+         $suppliers = Supplier::where('active', 1)->get();
         return view('admin.supplier.allSupplier',compact('suppliers'));
     }
 
@@ -109,7 +109,9 @@ class SupplierController extends Controller
     public function destroy(Supplier $supplier)
     {
         $name = $supplier->name;
-        $supplier->delete();
+        //$supplier->delete();
+        $supplier->active = 0;
+        $supplier->save();
         return redirect(route('admin.supplier.index'))->with('success','Supplier ' .$name.'  has been deleted Successfully');;
     }
 }

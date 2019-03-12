@@ -5,7 +5,7 @@
         <div class="col mb-4">
         <button class="btn btn-success">Add new</button>
     </div>
-    </a>Added
+    </a>
 </div>
 
 <div class="row">
@@ -60,11 +60,11 @@
                                 <td>{{$product->updated_at}}</td>
                                 <td>
                                     <div class="row mx-3">
-                                        </button>
-                                        <a
+                                        <div class="btn-group">
+                                             <a
                                             href="{{route('admin.product.edit',$product)}}"
                                             ><button
-                                                class=" btn-sm btn-success fa fa-edit"
+                                                class="btn btn-sm btn-success fa fa-edit"
                                             ></button
                                         ></a>
 
@@ -76,10 +76,12 @@
                                             <a
                                                 href="{{route('admin.product.destroy',$product->id)}}"
                                                 ><button
-                                                    class=" btn-sm btn-danger fa fa-trash"
+                                                    class="btn btn-sm btn-danger fa fa-trash"
                                                 ></button
                                             ></a>
                                         </form>
+                                </div> 
+                                       
                                     </div>
                                 </td>
                             </tr>
@@ -170,7 +172,6 @@
                                 id=""
                             >
                                 //auto generate from suppliier model 
-                                //TODO createsupplier model
                                 @foreach ($suppliers as $supplier)
                                         <option value="{{$supplier->id}}">{{$supplier->name}}</option> 
                                 @endforeach

@@ -92,7 +92,7 @@
        
     </div>
     @section('extrajs')
-        {{-- //TODO add scrollable to data table
+        {{--
         //TODO set auto focus to form on click new button --}}
         <script>
             $(document).ready(function() {

@@ -16,9 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        $products = Product::all();
-        $suppliers = Supplier::all();
+        $categories = Category::where('active', 1)->get();;
+        $products = Product::where('active', 1)->get();;
+        $suppliers = Supplier::where('active', 1)->get();;
         return view('admin.product.allProduct',compact('categories','products','suppliers'));
     }
 
@@ -29,9 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $products = Product::all();
-        $suppliers = Supplier::all();
+        $categories = Category::where('active', 1)->get();;
+        $products = Product::where('active', 1)->get();;
+        $suppliers = Supplier::where('active', 1)->get();;
         return view('admin.product.allProduct',compact('categories','products','suppliers'));
     }
 
@@ -88,8 +88,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
-    {   $categories = Category::all();
-        $suppliers = Supplier::all();
+    {   $categories = Category::where('active', 1)->get();
+        $suppliers = Supplier::where('active', 1)->get();
         return view('admin.product.editProduct',compact('product','categories','suppliers'));
     }
 
@@ -136,13 +136,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //find
-        //$product = Product::find($id);
         //store name 
         $name = $product->name;
         //delete
-        $product->delete();
-        //redirect
+        //$product->delete();
+        
+        //zero the active colium effectivelty deleting fromm back end
+        $product->active = false;
+        $product->save();
         return redirect(route("admin.product.index"))->with('success', $name.' Product has been deleted Successfully');
     }
 }

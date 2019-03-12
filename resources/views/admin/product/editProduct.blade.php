@@ -82,8 +82,6 @@
                                 id=""
                             >
                                 //auto generate from suppliier model 
-                                //TODO createsupplier model
-                                //fix this to pick right supplier
                                 @foreach ($suppliers as $supplier)
                                     @if ($supplier->id  === $product->supplier->id)
                                         <option value="{{$supplier->id}}" selected>{{$supplier->name}}</option>
