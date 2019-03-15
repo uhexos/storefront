@@ -15,7 +15,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/admin/admin.css')}}" rel="stylesheet">
-
+  <link href="{{asset('css/select2.min.css')}}" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -144,7 +144,7 @@
           <span>Reports</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('sale.create')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Sales</span></a>
       </li>
@@ -195,6 +195,13 @@
   
 
 <script src="{{asset('js/admin/sb-admin.js')}}"></script>
+<script src="{{asset('js/select2.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+      $('select').select2();
+  });
+</script>
+
 @yield('extrajs')
 </body>
 

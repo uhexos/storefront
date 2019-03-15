@@ -16,9 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('active', 1)->get();;
-        $products = Product::where('active', 1)->get();;
-        $suppliers = Supplier::where('active', 1)->get();;
+        $categories = Category::where('active', 1)->get();
+        $products = Product::where('active', 1)->get();
+        $suppliers = Supplier::where('active', 1)->get();
         return view('admin.product.allProduct',compact('categories','products','suppliers'));
     }
 
@@ -29,10 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('active', 1)->get();;
-        $products = Product::where('active', 1)->get();;
-        $suppliers = Supplier::where('active', 1)->get();;
-        return view('admin.product.allProduct',compact('categories','products','suppliers'));
+        return redirect()->route('admin.product.index'); 
     }
 
     /**

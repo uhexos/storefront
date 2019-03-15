@@ -47,5 +47,11 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
          Route::resource('/supplier', 'SupplierController');
-    });    
+    });
+
 });
+
+Route::post('/sale/new', 'SaleController@store')->name('sale.store');
+Route::get('/sale/', 'SaleController@create')->name('sale.create');
+Route::post('/sale/getItem/{id}', 'SaleController@getItem')->name('sale.getItem');
+

@@ -25,8 +25,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-         $suppliers = Supplier::where('active', 1)->get();
-        return view('admin.supplier.allSupplier',compact('suppliers'));
+        return redirect()->route('admin.supplier.index');
     }
 
     /**
@@ -112,6 +111,6 @@ class SupplierController extends Controller
         //$supplier->delete();
         $supplier->active = 0;
         $supplier->save();
-        return redirect(route('admin.supplier.index'))->with('success','Supplier ' .$name.'  has been deleted Successfully');;
+        return redirect(route('admin.supplier.index'))->with('success','Supplier ' .$name.'  has been deleted Successfully');
     }
 }

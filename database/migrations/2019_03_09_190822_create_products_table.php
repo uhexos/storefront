@@ -7,11 +7,11 @@ use Illuminate\Database\Migrations\Migration;
 class CreateProductsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.https://www.bing.com/search?FORM=INCOH1&PC=IC04&PTAG=ICO-e3d92a9a
      *
      * @return void
      */
-    // heavily refactor this model into stock , product product_sale_item from site https://www.vertabelo.com/blog/technical-articles/modeling-a-database-for-recording-sales-part-2-creating-tables-for-products-and-services
+    // TODO heavily refactor this model into stock , product product_sale_item from site https://www.vertabelo.com/blog/technical-articles/modeling-a-database-for-recording-sales-part-2-creating-tables-for-products-and-services
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {

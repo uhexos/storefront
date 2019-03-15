@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-         <div class="col-12 col-md-12 mb-4 ">
+         {{-- <div class="col-12 col-md-12 mb-4 ">
             <div class="card">
                 <div class="card">
                     <div class="card-header">
@@ -60,9 +60,60 @@
                
             </div>
            
-        </div>
+        </div> --}}
         
-        
+        @component('component.table')
+        @slot('title')
+            Manage categories
+        @endslot
+        @slot('id')
+        example
+        @endslot
+        @slot('headings')
+            
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Actions</th>
+            
+        @endslot
+        @slot('footings')
+            
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Actions</th>
+            
+        @endslot
+        @slot('body')
+            
+                   @foreach ($categories as $category)
+                    <tr>
+                       <td>{{$category->id}}</td>
+                       <td>{{$category->name}}</td>
+                       <td>{{$category->description}}</td>
+                       <td>{{$category->updated_at}}</td>
+                       <td>
+                            <div class="row mx-3">
+                            <a href="{{route('admin.category.edit',$category->id)}}"><button class=" btn-sm btn-success fa fa-edit"></button></a>
+
+                            <form action="{{route('admin.category.destroy',$category->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                            <button class=" btn-sm btn-danger fa fa-trash"></button>
+                            </form>
+                            </div>
+                       </td>
+                    </tr>
+                      
+                   @endforeach
+               
+        @endslot
+
+    
+    @endcomponent
 
         <div class="col-12 col-md-6" id="newCategory">
            <div class="card">

@@ -26,8 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('active', 1)->get();     
-        return(view('admin.category.createCategory',compact('categories')));
+        return redirect()->route('admin.category.index');
     }
 
     /**
