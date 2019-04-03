@@ -19,7 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //TODO remove this after tesign 
+        //TODO remove this after testing 
         'sale/*',
     
     ];

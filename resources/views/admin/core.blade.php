@@ -202,7 +202,7 @@
   });
 </script>
 
-@yield('extrajs')
+@stack('extrajs')
 </body>
 
 </html>

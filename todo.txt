@@ -1,4 +1,8 @@
 //TODO add support for mobile mmoney
 //TODO get a theme for front end
-//TODO clean up the javascript for the image deteection wrap into  a nice function
+//TODO clean up the javascript for the image deteection wrap into  a nice function -- done
+TODO split all form and table into msnsge and create blade files
+TODO add jquery focus to all form fields on load.
 
+fix the cart 
+get items to add to cart auto 

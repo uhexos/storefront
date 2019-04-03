@@ -15,7 +15,8 @@ class Product extends Model
             'quantity_left',
             'cost_price',
             'selling_price',
-            'media_id'
+            'media_id',
+            'barcode'
     ];
 
     //category relatinship for eloquent 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Sale;
 use App\Product;
 use App\SaleItem;
+use App\Cart;
 use Illuminate\Http\Request;
+use Session;
 
 class SaleController extends Controller
 {
@@ -34,6 +36,7 @@ class SaleController extends Controller
          $product->load('category', 'supplier');        
          return compact('product');
     }
+
     /**
      * Store a newly created resource in storage.
      *

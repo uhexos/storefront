@@ -18,7 +18,7 @@ class CreateSuppliersTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->char('email',255);
-            $table->string('description');            
+            $table->text('description');            
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

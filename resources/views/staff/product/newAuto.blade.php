@@ -1,7 +1,7 @@
 @extends('staff.core')
 
 @section('content')
-    <body>
+<body>
     <!-- Div to show the scanner -->
     <div id="scanner-container"></div>
     <input type="button" id="btn" value="Start/Stop the scanner" />
@@ -162,6 +162,6 @@
         false
       );
     </script>
-  </body>
+</body>
 
 @endsection

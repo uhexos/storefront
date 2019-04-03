@@ -50,6 +50,8 @@ class ProductController extends Controller
                     'product_cost' => 'required|numeric',
                     'product_desc' => 'required|string|max:255',
                     'product_image' => '',
+                    'barcode' => 'required|string|max:15|unique:products,barcode',
+
                     //TODO add validation for product image 
                     ]);
         $product = new Product;
@@ -62,7 +64,7 @@ class ProductController extends Controller
         $product->cost_price  =  $request->get('product_cost');
         $product->description  =  $request->get('product_desc');
         $product->media_id  =  $request->get('product_image');
-
+        $product->barcode  =  $request->get('barcode');
         $product->save();
          return redirect(route('admin.product.create'))->with('success',$product->name." Added successfully");
     }
@@ -99,6 +101,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        //TODO fix for barcode
         $validatedData = $request->validate([
                     'product_name' => 'required|string|unique:products,name,'.$product->id,
                     'product_desc' => 'required|string',
@@ -109,6 +112,7 @@ class ProductController extends Controller
                     'product_cost' => 'required|numeric',
                     'product_desc' => 'required|string|max:255',
                     'product_image' => '',
+                    'barcode' => 'required|string|max:15|unique:products,barcode,'.$product->id,
                     //TODO add validation for product image 
                     ]);
         $product->name  =  $request->get('product_name');
@@ -120,7 +124,7 @@ class ProductController extends Controller
         $product->cost_price  =  $request->get('product_cost');
         $product->description  =  $request->get('product_desc');
         $product->media_id  =  $request->get('product_image');
-
+        $product->barcode  =  $request->get('barcode');
         $product->save();
          return redirect(route('admin.product.create'))->with('success',$product->name." updated successfully");
     }

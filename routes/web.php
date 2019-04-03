@@ -19,16 +19,12 @@ Route::get('/login', function () {return view('login');})->name('login');
 Route::get('/test', function () {return view('admin.test');})->name('test');
 Route::get('/register', function () {return view('register');})->name('register');
 Route::get('/admin/', function () {return view('admin.home');})->name('admin.home');
-// Route::get('/admin/category/new', function () {return view('admin.category.createCategory');})->name('admin.createCategory');
-// Route::get('/admin/category/all', function () {return view('admin.category.allCategory');})->name('admin.allCategory');
-// Route::get('/admin/product/new', function () {return view('admin.product.createProduct');})->name('admin.createProduct');
-// Route::get('/admin/products', function () {return view('admin.product.allProduct');})->name('admin.allProduct');
 Route::get('/admin/user/new', function () {return view('admin.user.createUser');})->name('admin.createUser');
 Route::get('/admin/users', function () {return view('admin.user.allUser');})->name('admin.allUser');
 // Route::get('/admin/new/supplier', function () {return view('admin.supplier.createSupplier');})->name('admin.createSupplier');
 // Route::get('/admin/suppliers', function () {return view('admin.supplier.allSupplier');})->name('admin.allSupplier');
 
-Route::get('/staff', function () {return view('staff.home');})->name('staff.home');
+Route::get('/staff', function () {return view('staff.home');})->name('staff.home')  ;
 Route::get('/staff/product/new/auto', function () {return view('staff.product.newAuto');})->name('staff.product.auto');
 Route::get('/staff/product/new/manual', function () {return view('staff.product.newManual');})->name('staff.product.manual');
 Route::get('/staff/profile', function () {return view('staff.profile');})->name('staff.profile');
@@ -54,4 +50,7 @@ Route::prefix('admin')->group(function () {
 Route::post('/sale/new', 'SaleController@store')->name('sale.store');
 Route::get('/sale/', 'SaleController@create')->name('sale.create');
 Route::post('/sale/getItem/{id}', 'SaleController@getItem')->name('sale.getItem');
+Route::post('/cart/add-to-cart/{id}', 'CartController@addToCart')->name('cart.addToCart');
+Route::post('/cart', 'CartController@viewCart')->name('cart.viewCart');
+
 

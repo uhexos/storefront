@@ -1,90 +1,73 @@
-@extends('admin.core') @section('content')
+@extends('admin.core') 
+@section('content')
 <div class="row mb-2">
     <div class="col">
         <a name="newSupplier" id="" class="btn btn-success" href="#newSupplier" role="button">Add new</a>
-    </div> 
-    
-</div>
-<div class="row">
-    {{-- supplier  table --}}
-    <div class="col-12">
-        <div class="row">
-            <div class="col-12 col-md-12 mb-4 ">
-                <div class="card">
-                    <div class="card">
-                        <div class="card-header">
-                            Manage Supplier
-                        </div>
-                        <div class="card-body">
-                            <table
-                                id="example"
-                                class="table table-striped table-bordered"
-                                style="width:100%"
-                            >
-                                <thead>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Actions</th>
-                                </thead>
-                                <tfoot>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Actions</th>
-                                </tfoot>
-                               
-                                <tbody>
-                                    @foreach ($suppliers as $supplier)
-                                    <tr>
-                                        <td>{{$supplier->id}}</td>
-                                        <td>{{$supplier->name}}</td>
-                                        <td>{{$supplier->phone}}</td>
-                                        <td>{{$supplier->email}}</td>
-                                        <td>{{$supplier->description}}</td>
-                                        <td>{{$supplier->updated_at}}</td>
-                                        <td>
-                                            <div class="row mx-3">
-                                                <a
-                                                    href="{{route('admin.supplier.edit',$supplier)}}"
-                                                    ><button
-                                                        class=" btn-sm btn-success fa fa-edit"
-                                                    ></button
-                                                ></a>
-
-                                                <form
-                                                    action="{{route('admin.supplier.destroy',$supplier)}}"
-                                                    method="post"
-                                                >
-                                                    @csrf @method('delete')
-                                                    <button type=""
-                                                            class=" btn-sm btn-danger fa fa-trash"
-                                                        ></button
-                                                    >
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer text-muted">
-                            Last Updated:
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
+</div>
+<div class="row">
+    {{-- supplier table --}} 
+@component('component.table')
+    @slot('title')
+        Manage Supplier
+    @endslot
+    @slot('id')
+        supplierTable
+    @endslot
+    @slot('headings')
+        
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+    
+    @endslot
+    @slot('footings')
+    
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+        
+    @endslot
+    @slot('body')
+        
+            @foreach ($suppliers as $supplier)
+            <tr>
+                <td>{{$supplier->id}}</td>
+                <td>{{$supplier->name}}</td>
+                <td>{{$supplier->phone}}</td>
+                <td>{{$supplier->email}}</td>
+                <td>{{$supplier->description}}</td>
+                <td>{{$supplier->updated_at}}</td>
+                <td>
+                    <div class="row mx-3">
+                        <a href="{{route('admin.supplier.edit',$supplier)}}"><button
+                                                                class=" btn-sm btn-success fa fa-edit"
+                                                            ></button
+                                                        ></a>
+        
+                        <form action="{{route('admin.supplier.destroy',$supplier)}}" method="post">
+                            @csrf @method('delete')
+                            <button type="" class=" btn-sm btn-danger fa fa-trash"></button
+                                                            >
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+        
+                                            @endforeach
+                                        
+    @endslot
+        
+@endcomponent
     {{-- add new supplier form --}}
     <div class="col-12 col-md-6 mb-2" id="newSupplier">
         <div class="card">
@@ -153,28 +136,14 @@
                     <button type="submit" class="btn btn-primary">
                         New supplier
                     </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    {{-- end new supplier form--}}
-</div>
+                                                </form>
+                                            </div>
+                        </div>
+                    </div>
+                    {{-- end new supplier form--}}
+                </div>
 
-@section('extrajs')
-@section('extrajs')
-        {{--
-        //TODO set auto focus to form on click new button --}}
-        <script>
-            $(document).ready(function() {
-                var table  = $('#example').DataTable({
-        "scrollX": true
-    });
-                table
-                    .order( [ 5, 'desc' ] )
-                    .draw();
-            });
-        </script>
-    @endsection
-@endsection
+
+
 
 @endsection

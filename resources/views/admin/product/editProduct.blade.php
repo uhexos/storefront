@@ -59,8 +59,6 @@
                                     name="product_category"
                                     id=""
                                 >
-                                    //auto generate from categories model
-                                    //TODO implement search on select
                                     @foreach ($categories as $category)
                                         @if ($category->id === $product->category->id)
                                             <option value="{{$category->id}}" selected>{{$category->name}}</option>
