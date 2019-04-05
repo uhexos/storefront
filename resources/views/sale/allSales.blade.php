@@ -10,6 +10,8 @@
     <div class="form-group">
       <label for="selectProduct">Select product</label>
       <select class="form-control" name="selectProduct" id="selectProduct">
+                  {{-- fixes the bug where if only one product, prices dont get rendered --}}
+                  <option value="">select ...</option>
                     @foreach ($products as $product)
                         <option value="{{$product->id}}">{{$product->name}}</option>
                     @endforeach
