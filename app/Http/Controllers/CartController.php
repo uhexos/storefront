@@ -24,8 +24,26 @@ class CartController extends Controller
         if (Session::has('cart')){
             return view('cart.viewCart', ['cart'=>Session::get('cart')]);
         }
-        return view('cart.viewCart', ['cart'=>null]) ;
+        return view('cart.emptyCart') ;
         
+    }
+
+    public function checkout(Request $request){
+        if (Session::has('cart')){
+            $cart  = Session::get('cart');
+
+            //update the quantity left in stock 
+            foreach ($cart->items as $saleItem) {
+                $productToUpdateDetails = Product::find($saleItem['product']->id);
+                $productToUpdateDetails->quantity_left -= $saleItem['qty'];
+                $productToUpdateDetails->save();
+            }
+            $request->session()->forget('cart');
+            $products = Product::where('active', 1)->get();
+            return redirect(route('sale.create'))->with('success',"sale of ".$cart->totalQty."items completed.Cart emptied");
+
+        }
+        // TODO make an empty cart page
     }
     
 }

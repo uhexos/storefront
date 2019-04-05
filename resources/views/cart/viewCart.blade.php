@@ -28,5 +28,10 @@
         </tbody>
     </table>
 
+    <form action="{{route('cart.checkout')}}" method="post">
+            @csrf
+            <button id="completeCheckout" type="submit" class="btn btn-primary">Complete Sale</button>
+        </div>
+    </form>
 </div>
 @endsection
