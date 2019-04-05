@@ -236,11 +236,11 @@
         console.log(
           "Barcode detected and processed : [" + result.codeResult.code + "]"
         ); 
-      var id = getIdFromBarcode(result.codeResult.code);
-      if (id != null) {
-        console.log('entered');
-        autoAddToCart(id);
-      }
+        var id = getIdFromBarcode(result.codeResult.code);
+        if (id != null) {
+          console.log('entered');
+          autoAddToCart(id);
+        }
       
 
       });
