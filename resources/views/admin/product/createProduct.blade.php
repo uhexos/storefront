@@ -49,7 +49,6 @@
                                     id=""
                                 >
                                     //auto generate from categories model
-                                    //TODO implement search on select
                                     @foreach ($categories as $category)
                              <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach

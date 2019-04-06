@@ -1,7 +1,7 @@
 @extends('admin.core') 
 @section('content')
-
-<div class="row">
+{{-- //TODO fix critical bug that allows entry of negative numbers change validation for all forms--}}
+<div class="row" id="errorSuccess">
 
 </div>
 <div class="col-md-12">
@@ -119,6 +119,7 @@
               {   
                   //console.log( form.serialize());
                   console.log(data);  
+                  alert("added successfullly");
               },
                 error: function(xhr, status, error) {
                         console.log(xhr)
@@ -138,6 +139,7 @@
     function startScanner() {
       Quagga.init(
         {
+          frequency: 5,
           inputStream: {
             name: "Live",
             type: "LiveStream",

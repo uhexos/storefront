@@ -101,7 +101,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //TODO fix for barcode
         $validatedData = $request->validate([
                     'product_name' => 'required|string|unique:products,name,'.$product->id,
                     'product_desc' => 'required|string',

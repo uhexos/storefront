@@ -12,8 +12,8 @@ use Session;
 class CartController extends Controller
 {
     public function addToCart(Request $request,$id)
-    {    $product   = Product::find($id);
-         $oldCart = Session::has('cart')?Session::get('cart'):null;
+    {   $product   = Product::find($id);
+        $oldCart = Session::has('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->add($product,$product->id,$request->get('quantity'));
         $request->session()->put('cart', $cart);
@@ -33,17 +33,25 @@ class CartController extends Controller
             $cart  = Session::get('cart');
 
             //update the quantity left in stock 
+            $names = "";
             foreach ($cart->items as $saleItem) {
+                $names = $names . ", " . $saleItem['product']->name;
                 $productToUpdateDetails = Product::find($saleItem['product']->id);
                 $productToUpdateDetails->quantity_left -= $saleItem['qty'];
                 $productToUpdateDetails->save();
             }
             $request->session()->forget('cart');
-            $products = Product::where('active', 1)->get();
-            return redirect(route('sale.create'))->with('success',"sale of ".$cart->totalQty."items completed.Cart emptied");
+            return redirect(route('sale.create'))->with('success',"sale of ".$names." items completed.Cart emptied");
 
         }
         // TODO make an empty cart page
     }
     
+    public function deleteCart (Request $request){
+        if (Session::has('cart')){
+            $request->session()->forget('cart');
+            return redirect(route('sale.create'))->with('success',"Cart emptied");
+        }
+        return view('cart.emptyCart') ;
+    }
 }

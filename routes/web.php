@@ -47,11 +47,13 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::post('/sale/new', 'SaleController@store')->name('sale.store');
 Route::get('/sale/', 'SaleController@create')->name('sale.create');
+Route::post('/sale/new', 'SaleController@store')->name('sale.store');
 Route::post('/sale/getItem/{id}', 'SaleController@getItem')->name('sale.getItem');
-Route::post('/cart/add-to-cart/{id}', 'CartController@addToCart')->name('cart.addToCart');
+
 Route::post('/cart', 'CartController@viewCart')->name('cart.viewCart');
+Route::post('/cart/add-to-cart/{id}', 'CartController@addToCart')->name('cart.addToCart');
 Route::post('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
+Route::post('/cart/delete', 'CartController@deleteCart')->name('cart.delete');
 
 

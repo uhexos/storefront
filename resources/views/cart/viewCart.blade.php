@@ -28,10 +28,22 @@
         </tbody>
     </table>
 
-    <form action="{{route('cart.checkout')}}" method="post">
-            @csrf
-            <button id="completeCheckout" type="submit" class="btn btn-primary">Complete Sale</button>
-        </div>
-    </form>
+    <div class="row">
+            <div class="col-2">
+                <form action="{{route('cart.checkout')}}" method="post">
+                    @csrf
+                    <button id="completeCheckout" type="submit" class="btn btn-primary">Complete Sale</button>
+                </form>
+            </div>
+            
+            <div class="col-2">
+                <form action="{{route('cart.delete')}}" method="post">
+                    @csrf
+                    <button id="cartDelete" type="submit" class="btn btn-danger">Delete Cart</button>
+                </form>
+            </div>
+          
+    </div>
+    
 </div>
 @endsection
