@@ -65,7 +65,7 @@
 </div>
 @endsection
  @push('extrajs')
- <script src="{{asset('js/quagga.min.js')}}"></script>
+ <script src="{{secure_asset('js/quagga.min.js')}}"></script>
 <script>
   var Products = @json($products);
   //create hashmap of barcode and keys for better search

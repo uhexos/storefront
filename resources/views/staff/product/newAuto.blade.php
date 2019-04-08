@@ -12,7 +12,7 @@
   
 
     <!-- Include the image-diff library -->
-    <script src="{{asset('js/quagga.min.js')}}"></script>
+    <script src="{{secure_asset('js/quagga.min.js')}}"></script>
 
     <script>
       var _scannerIsRunning = false;
