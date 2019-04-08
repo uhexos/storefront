@@ -14,7 +14,7 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="{{secure_asset('css/admin/admin.css',}" rel="stylesheet">
+  <link href="{{secure_asset('css/admin/admin.css')}}" rel="stylesheet">
   <link href="{{secure_asset('css/select2.min.css')}}" rel="stylesheet" />
 </head>
 
