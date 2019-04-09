@@ -15,6 +15,10 @@ class CartController extends Controller
     {   $product   = Product::find($id);
         $oldCart = Session::has('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
+        $validatedData = $request->validate([
+            'quantity' => 'required|numeric|min:0'
+             //TODO add validation for product image 
+             ]);
         $cart->add($product,$product->id,$request->get('quantity'));
         $request->session()->put('cart', $cart);
         return json_encode(Session::get('cart'));
@@ -29,15 +33,22 @@ class CartController extends Controller
     }
 
     public function checkout(Request $request){
+
         if (Session::has('cart')){
             $cart  = Session::get('cart');
-
             //update the quantity left in stock 
             $names = "";
             foreach ($cart->items as $saleItem) {
                 $names = $names . ", " . $saleItem['product']->name;
                 $productToUpdateDetails = Product::find($saleItem['product']->id);
-                $productToUpdateDetails->quantity_left -= $saleItem['qty'];
+                if ( $saleItem['qty'] <= $productToUpdateDetails->quantity_left){
+                    $productToUpdateDetails->quantity_left -= $saleItem['qty'];
+                }
+                else {
+      
+                    return redirect(route('cart.viewCart'))->with('error',"Cant checkout insuffient stock for  ".$saleItem['product']->name);
+
+                }
                 $productToUpdateDetails->save();
             }
             $request->session()->forget('cart');

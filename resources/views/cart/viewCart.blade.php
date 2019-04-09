@@ -1,6 +1,21 @@
 @extends('admin.core') 
 @section('content')
 
+<div class="row">
+    <div class="col-12">
+        {{-- error messsages hack cant figure out the $validator for laravel  --}}
+        @if(session()->get('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session()->get('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <br />
+        @endif 
+    </div>
+</div>
+
 <div class="col-12">
     <table class="table table-striped">
         <thead>
@@ -30,7 +45,7 @@
 
     <div class="row">
             <div class="col-2">
-                <form action="{{route('cart.checkout')}}" method="post">
+                <form action="{{route('cart.checkout')}}" method="get">
                     @csrf
                     <button id="completeCheckout" type="submit" class="btn btn-primary">Complete Sale</button>
                 </form>

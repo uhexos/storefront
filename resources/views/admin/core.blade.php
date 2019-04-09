@@ -14,8 +14,8 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="{{secure_asset('css/admin/admin.css')}}" rel="stylesheet">
-  <link href="{{secure_asset('css/select2.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('css/admin/admin.css')}}" rel="stylesheet">
+  <link href="{{asset('css/select2.min.css')}}" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -139,7 +139,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('admin.report.all')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reports</span></a>
       </li>
@@ -194,8 +194,8 @@
   </div>
   
 
-<script src="{{secure_asset('js/admin/sb-admin.js')}}"></script>
-<script src="{{secure_asset('js/select2.min.js')}}"></script>
+<script src="{{asset('js/admin/sb-admin.js')}}"></script>
+<script src="{{asset('js/select2.min.js')}}"></script>
 <script>
     $(document).ready(function() {
       $('select').select2();

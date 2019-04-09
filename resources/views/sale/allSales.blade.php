@@ -5,7 +5,7 @@
 
 </div>
 <div class="col-md-12">
-  <form action="{{route('cart.viewCart')}}" method="post" id='salesForm'>
+  <form action="{{route('cart.viewCart')}}" method="get" id='salesForm'>
     @csrf
     <div class="form-group">
       <label for="selectProduct">Select product</label>
@@ -20,17 +20,17 @@
     <div class="row">
       <div class="form-group col-sm-4">
         <label for="price">Quantity</label>
-        <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId" placeholder="">
+        <input type="number" min="1" class="form-control" name="quantity" id="quantity" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Quantity</small>
       </div>
       <div class="form-group col-sm-4">
         <label for="price">Price</label>
-        <input type="number" class="form-control" name="" id="price" aria-describedby="helpId" placeholder="" disabled>
+        <input type="number" min="1" class="form-control" name="" id="price" aria-describedby="helpId" placeholder="" disabled>
         <small id="helpId" class="form-text text-muted">Price</small>
       </div>
       <div class="form-group col-sm-4">
         <label for="quantityAvailable">Quantity Available</label>
-        <input type="number" disabled class="form-control" name="" id="quantityAvailable" aria-describedby="helpId" placeholder="">
+        <input type="number" min="1" disabled class="form-control" name="" id="quantityAvailable" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">quantityAvailable</small>
       </div>
       <div class="form-group col-sm-4">
@@ -65,7 +65,7 @@
 </div>
 @endsection
  @push('extrajs')
- <script src="{{secure_asset('js/quagga.min.js')}}"></script>
+ <script src="{{asset('js/quagga.min.js')}}"></script>
 <script>
   var Products = @json($products);
   //create hashmap of barcode and keys for better search

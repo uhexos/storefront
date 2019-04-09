@@ -15,7 +15,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
-<link rel="stylesheet" href="{{secure_asset('css/admin/admin.css')}}">
+<link rel="stylesheet" href="{{asset('css/admin/admin.css')}}">
 
 
 </head>
@@ -23,7 +23,7 @@
 
 
   <!-- Bootstrap core JavaScript-->
-<script src="{{secure_asset('js/admin/sb-admin.js')}}"></script>
+<script src="{{asset('js/admin/sb-admin.js')}}"></script>
 
 
 </html>

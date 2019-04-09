@@ -14,7 +14,7 @@
   {{-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> --}}
 
   <!-- Custom styles for this template-->
-  <link href="{{secure_asset('css/admin/admin.css')}}" rel="stylesheet">
+  <link href="{{asset('css/admin/admin.css')}}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -147,7 +147,7 @@
     </div>
   </div>
   
-<script src="{{secure_asset('js/admin/sb-admin.js')}}"></script>
+<script src="{{asset('js/admin/sb-admin.js')}}"></script>
 </body>
 
 </html>

@@ -96,7 +96,7 @@
                             <div class="form-group">
                             <label for="product_sale_price">Sale Price</label>
                             <input
-                                type="number"
+                                type="number" min="1"
                                 class="form-control"
                                 name="product_sale_price"
                                 id=""
@@ -115,7 +115,7 @@
                             <div class="form-group">
                             <label for="product_cost">Cost Price</label>
                             <input
-                                type="number"
+                                type="number" min="1"
                                 class="form-control"
                                 name="product_cost"
                                 id=""
