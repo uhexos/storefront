@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('quantity_left');
             $table->double('cost_price',8,2);
             $table->double('selling_price',8,2);
-            $table->unsignedBigInteger('media_id');
+            $table->double('tax_rate',4,4);
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('active')->default(true);
             $table->string('barcode',15)->default('0')->unique();

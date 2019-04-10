@@ -29,6 +29,11 @@
         <small id="helpId" class="form-text text-muted">Price</small>
       </div>
       <div class="form-group col-sm-4">
+        <label for="tax">Tax Rate</label>
+        <input type="number" min="1" class="form-control" name="tax" id="tax" aria-describedby="helpId" placeholder="" disabled>
+        <small id="helpId" class="form-text text-muted">Tax</small>
+      </div>
+      <div class="form-group col-sm-4">
         <label for="quantityAvailable">Quantity Available</label>
         <input type="number" min="1" disabled class="form-control" name="" id="quantityAvailable" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">quantityAvailable</small>
@@ -62,6 +67,7 @@
   </form>`
 </div>
 </div>
+<div id="errord"></div>
 </div>
 @endsection
  @push('extrajs')
@@ -97,6 +103,7 @@
                 $('#category').val(data.product.category.name); 
                 $('#date').val(data.product.updated_at); 
                 $('#description').val(data.product.description); 
+                $('#tax').val(data.product.tax_rate); 
                 
                 
             },
@@ -120,9 +127,14 @@
                   //console.log( form.serialize());
                   console.log(data);  
                   alert("added successfullly");
+                  $('#errord').html(data);
+
               },
-                error: function(xhr, status, error) {
-                        console.log(xhr)
+                error: function(xhr, data,status, error) {
+
+                        console.log(xhr.responseText);
+                       
+                        $('#errord').html(xhr.data);
       },
             });
 

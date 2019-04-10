@@ -33,19 +33,33 @@ class CartController extends Controller
     }
 
     public function checkout(Request $request){
-
+        $sale = new Sale;
+        
         if (Session::has('cart')){
             $cart  = Session::get('cart');
+            $sale->total_quantity_sold = $cart->totalQty;
+            $sale->total_price = $cart->totalPrice;
+            $sale->total_tax = $cart->totalTax;
+            $sale->save();
+
             //update the quantity left in stock 
             $names = "";
             foreach ($cart->items as $saleItem) {
+                $saleItemObj = new SaleItem;
+
                 $names = $names . ", " . $saleItem['product']->name;
                 $productToUpdateDetails = Product::find($saleItem['product']->id);
                 if ( $saleItem['qty'] <= $productToUpdateDetails->quantity_left){
                     $productToUpdateDetails->quantity_left -= $saleItem['qty'];
+                    $saleItemObj->product_id = $saleItem['product']->id;
+                    $saleItemObj->quantity_sold = $saleItem['qty'];
+                    $saleItemObj->tax = $saleItem['tax_rate'] * $saleItem['qty'];
+                    $saleItemObj->price_per_unit = $saleItem['product']->selling_price;
+                    $saleItemObj->price = $saleItem['price'];
+                    $saleItemObj->sale_id = $sale->id;
+                    $saleItemObj->save();
                 }
                 else {
-      
                     return redirect(route('cart.viewCart'))->with('error',"Cant checkout insuffient stock for  ".$saleItem['product']->name);
 
                 }

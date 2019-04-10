@@ -43,13 +43,13 @@ class ProductController extends Controller
         $validatedData = $request->validate([
                     'product_name' => 'required|string|unique:products,name',
                     'product_desc' => 'required|string',
-                    'product_quantity' => 'required|numeric',
+                    'product_quantity' => 'required|numeric|min:1',
                     'product_category' => 'required|numeric',
                     'product_supplier' => 'required|numeric',
                     'product_sale_price' => 'required|numeric',
                     'product_cost' => 'required|numeric',
                     'product_desc' => 'required|string|max:255',
-                    'product_image' => '',
+                    'product_tax_rate' => 'required|numeric|max:1|min:0',
                     'barcode' => 'required|string|max:15|unique:products,barcode',
 
                     //TODO add validation for product image 
@@ -63,8 +63,8 @@ class ProductController extends Controller
         $product->selling_price  =  $request->get('product_sale_price');
         $product->cost_price  =  $request->get('product_cost');
         $product->description  =  $request->get('product_desc');
-        $product->media_id  =  $request->get('product_image');
         $product->barcode  =  $request->get('barcode');
+        $product->tax_rate  =  $request->get('product_tax_rate');
         $product->save();
          return redirect(route('admin.product.create'))->with('success',$product->name." Added successfully");
     }

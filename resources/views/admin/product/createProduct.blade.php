@@ -1,19 +1,19 @@
 {{-- form for new--}}
 <div class="col-md-12 mt-4" id='newProduct'>
-    <div class="card">
-        <div class="card-header">
-            Create product
-        </div>
-        <div class="card-body">
-            <form action="{{ route('admin.product.store') }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="product_name">Product Name</label>
-                            <input type="text" name="product_name" id="" class="form-control" placeholder="Enter product name ..." aria-describedby="helpId"
-                            />
-                            <small id="helpId" class="text-muted">Enter a valid name</small
+  <div class="card">
+    <div class="card-header">
+      Create product
+    </div>
+    <div class="card-body">
+      <form action="{{ route('admin.product.store') }}" method="post">
+        @csrf
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="product_name">Product Name</label>
+              <input type="text" name="product_name" id="" class="form-control" placeholder="Enter product name ..." aria-describedby="helpId"
+              />
+              <small id="helpId" class="text-muted">Enter a valid name</small
                             >
                             </div>
                         </div>
@@ -76,8 +76,10 @@
                             <div class="form-group">
                             <label for="product_sale_price">Sale Price</label>
                             <input
-                                type="number" min="1"
+                                type="number" 
+                                min="0.01"
                                 class="form-control"
+                                step="any"
                                 name="product_sale_price"
                                 id=""
                                 aria-describedby="helpId"
@@ -94,7 +96,8 @@
                             <div class="form-group">
                             <label for="product_cost">Cost Price</label>
                             <input
-                                type="number" min="1"
+                                type="number" min=".01"
+                                step="any"
                                 class="form-control"
                                 name="product_cost"
                                 id=""
@@ -109,63 +112,66 @@
                         
                     </div>
                     
+                   
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <label for="product_image"></label>
-                                <input
-                                    type="file"
-                                    class="form-control-file"
-                                    name="product_image"
-                                    id=""
-                                    placeholder=""
-                                    aria-describedby="fileHelpId"
-                                />
-                                <small id="fileHelpId" class="form-text text-muted"
-                                    >Image of product</small>
+                            <label for="product_tax_rate">Tax rates</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="product_tax_rate"
+                                step="any"
+                                min="0.01"
+
+                                id=""
+                                aria-describedby="helpId"
+                                placeholder=""
+                            />
+                            <small id="helpId" class="form-text text-muted"
+                                >tax rate as decimal</small
+                            >
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label for="barcode">Barcode</label>
-                            <input type="text" class="form-control" name="barcode" id="barcode" aria-describedby="helpId" placeholder="">
-                            <small id="helpId" class="form-text text-muted">Verify Barcode</small>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="form-group">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="barcode">Barcode</label>
+                                <input type="text" class="form-control" name="barcode" id="barcode" aria-describedby="helpId" placeholder="">
+                                <small id="helpId" class="form-text text-muted">Verify Barcode</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                          <div class="form-group">
                             <label for="scannerBtn"></label>
                             <input class="form-control btn-success" type="button" id="scannerBtn" value="Start/Stop the scanner" />
+                          </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="product_desc"></label>
-                            <textarea class="form-control" name="product_desc" id="" rows="3" placeholder="Enter product description..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="product_desc"></label>
+              <textarea class="form-control" name="product_desc" id="" rows="3" placeholder="Enter product description..."></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">
                                 Add new Product
                             </button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                      <!-- Div to show the scanner -->
-                    <div id="scanner-container"></div>
-                    </div>
-                    
-                </div>
-            </form>
-
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Div to show the scanner -->
+            <div id="scanner-container"></div>
+          </div>
 
         </div>
-    </div>
-</div>
-{{-- end form for new--}}
+      </form>
 
-@push('extrajs')
+
+    </div>
+  </div>
+</div>
+{{-- end form for new--}} @push('extrajs')
 
 <script src="{{asset('js/quagga.min.js')}}"></script>
 <script>
@@ -295,6 +301,8 @@
             },
             false
           );
+
 </script>
+
 
 @endpush

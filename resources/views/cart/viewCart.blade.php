@@ -22,13 +22,15 @@
             <tr>
                 <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
+                <th scope="col">Tax</th>
+                <th scope="col">Total Price</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
                 <th scope="col">Totals: </th>
-            <th scope="col">{{$cart->totalQty}}</th>
+                <th scope="col">{{$cart->totalQty}}</th>
+                <th scope="col">{{$cart->totalTax}}</th>
                 <th scope="col">{{$cart->totalPrice}}</th>
             </tr>
         </tfoot>
@@ -37,7 +39,8 @@
             <tr>
                 <th scope="row">{{$item['product']->name}}</th>
                 <td>{{$item['qty']}}</td>
-                <td>{{$item['price']}}</td>
+                <td>{{$item['tax_rate'] * $item['price']}}</td>
+                <td>{{$item['price'] + ($item['tax_rate'] * $item['price'])}}</td>
             </tr>
             @endforeach
         </tbody>

@@ -9,6 +9,11 @@ class SaleItem extends Model
     protected $fillable = [
         'product_id',
         'quantity_sold',
+        'tax',
+        'price_per_unit',
+        'price',
+        'sale_id'
+
     ];
     public function sale(){
         return $this->belongsTo('App\Sale');

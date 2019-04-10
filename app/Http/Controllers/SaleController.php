@@ -45,6 +45,7 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO add a total sale price to the sale table schema
         $sale = new Sale;
         $total_quantity = 0;
         //$total_tax = 0;

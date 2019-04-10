@@ -14,11 +14,12 @@ class CreateSaleItemsTable extends Migration
     public function up()
     {
         Schema::create('sale_items', function (Blueprint $table) {
+            // TODO add cost price here for profit loss report
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('sale_id');
             $table->integer('quantity_sold');
-            $table->decimal('tax',4,4)->default(0.05);
+            $table->decimal('tax',14,4)->default(0.05);
             $table->decimal('price_per_unit',8,3);
             $table->decimal('price',8,3);
             $table->timestamps();
