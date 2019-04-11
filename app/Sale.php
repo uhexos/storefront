@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {    
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
     protected $fillable = [
     'total_quantity_sold',
     'total_price'

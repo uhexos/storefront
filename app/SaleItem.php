@@ -11,6 +11,7 @@ class SaleItem extends Model
         'quantity_sold',
         'tax',
         'price_per_unit',
+        'cost_per_unit',
         'price',
         'sale_id'
 

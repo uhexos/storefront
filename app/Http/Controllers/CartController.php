@@ -53,8 +53,9 @@ class CartController extends Controller
                     $productToUpdateDetails->quantity_left -= $saleItem['qty'];
                     $saleItemObj->product_id = $saleItem['product']->id;
                     $saleItemObj->quantity_sold = $saleItem['qty'];
-                    $saleItemObj->tax = $saleItem['tax_rate'] * $saleItem['qty'];
+                    $saleItemObj->tax = $saleItem['tax_rate'] * $saleItem['price'];
                     $saleItemObj->price_per_unit = $saleItem['product']->selling_price;
+                    $saleItemObj->cost_per_unit = $saleItem['product']->cost_price;
                     $saleItemObj->price = $saleItem['price'];
                     $saleItemObj->sale_id = $sale->id;
                     $saleItemObj->save();

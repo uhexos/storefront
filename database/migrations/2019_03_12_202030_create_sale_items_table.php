@@ -21,7 +21,8 @@ class CreateSaleItemsTable extends Migration
             $table->integer('quantity_sold');
             $table->decimal('tax',14,4)->default(0.05);
             $table->decimal('price_per_unit',8,3);
-            $table->decimal('price',8,3);
+            $table->decimal('cost_per_unit',8,3);
+            $table->decimal('price',12,3);
             $table->timestamps();
         });
 

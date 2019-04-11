@@ -198,11 +198,11 @@
 <script src="{{asset('js/select2.min.js')}}"></script>
 <script>
     $(document).ready(function() {
-      $('select').select2();
+      $('select:not(.noSelect2)').select2();
   });
 </script>
 
-@stack('extrajs')
+@stack('extrajs'):
 </body>
 
 </html>

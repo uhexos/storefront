@@ -57,3 +57,5 @@ Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
 Route::post('/cart/delete', 'CartController@deleteCart')->name('cart.delete');
 
 Route::get('/admin/report/', 'ReportController@index')->name('admin.report.all');
+Route::get('/admin/report/sales', 'ReportController@getSales')->name('admin.report.sales');
+Route::get('/admin/report/outOfStock', 'ReportController@getOutOfStock')->name('admin.report.stock');
